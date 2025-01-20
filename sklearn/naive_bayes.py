@@ -154,9 +154,8 @@ class GaussianNB(_BaseNB):
 
     Can perform online updates to model parameters via :meth:`partial_fit`.
     For details on algorithm used to update feature means and variance online,
-    see Stanford CS tech report STAN-CS-79-773 by Chan, Golub, and LeVeque:
-
-        http://i.stanford.edu/pub/cstr/reports/cs/tr/79/773/CS-TR-79-773.pdf
+    see `Stanford CS tech report STAN-CS-79-773 by Chan, Golub, and LeVeque
+    <http://i.stanford.edu/pub/cstr/reports/cs/tr/79/773/CS-TR-79-773.pdf>`_.
 
     Read more in the :ref:`User Guide <gaussian_naive_bayes>`.
 
@@ -772,6 +771,7 @@ class _BaseDiscreteNB(_BaseNB):
 
     def __sklearn_tags__(self):
         tags = super().__sklearn_tags__()
+        tags.input_tags.sparse = True
         tags.classifier_tags.poor_score = True
         return tags
 
@@ -1433,6 +1433,7 @@ class CategoricalNB(_BaseDiscreteNB):
 
     def __sklearn_tags__(self):
         tags = super().__sklearn_tags__()
+        tags.input_tags.sparse = False
         tags.input_tags.positive_only = True
         return tags
 
